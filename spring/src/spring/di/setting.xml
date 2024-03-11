@@ -11,7 +11,7 @@
     <context:annotation-config />  
     <!-- Exam exam = new NewlecExam(); -->
     <bean id="exam1" class="spring.entity.NewlecExam" p:kor="10" p:eng="20" p:math="30" p:com="40"/>
-    <bean id="exam1" class="spring.entity.NewlecExam" p:kor="20" p:eng="20" p:math="30" p:com="40"/>
+    <bean id="exam2" class="spring.entity.NewlecExam" p:kor="20" p:eng="20" p:math="30" p:com="40"/>
     <!--<bean id="exam" class="spring.entity.NewlecExam">
 		<constructor-arg name="kor" value="10"/>
 		<constructor-arg name="eng" value="20"/>
