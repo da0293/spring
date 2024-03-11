@@ -6,27 +6,33 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import spring.entity.Exam;
 
 public class InlineExamConsole implements ExamConsole {
+
+	@Autowired(required=false) //bean객체가 없어도 가능 
+	@Qualifier("exam2")
 	private Exam exam;
 	
+	public InlineExamConsole() {
+		System.out.println("constructor");
+	}
 
 	public InlineExamConsole(Exam exam) {
+		System.out.println("overload constructor");
 		this.exam = exam;
 	}
 
-	public InlineExamConsole() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public void print() {
-		System.out.printf("total is %d, avg is %f\n", exam.total(), exam.avg());
+		if(exam==null)
+			System.out.printf("total is %d, avg is %f\n",0,0.0);
+		else
+			System.out.printf("total is %d, avg is %f\n",exam.total(),exam.avg());
 	}
-	@Autowired
-	@Qualifier("exam2")
+	
 	@Override
 	public void setExam(Exam exam) {
+		System.out.println("setter injection");
 		this.exam=exam; 
-		
 	}
 
 }
