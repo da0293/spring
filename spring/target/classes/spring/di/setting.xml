@@ -8,7 +8,8 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:annotation-config />  
+
+    <context:component-scan base-package="spring.di.ui, spring.entity"/>
     <!-- Exam exam = new NewlecExam(); -->
     <!--<bean id="exam1" class="spring.entity.NewlecExam" p:kor="10" p:eng="20" p:math="30" p:com="40"/>
     <bean id="exam2" class="spring.entity.NewlecExam" p:kor="20" p:eng="20" p:math="30" p:com="40"/>-->
@@ -19,8 +20,8 @@
 		<constructor-arg name="math" value="40"/>
     </bean>-->
 	 <!--ExamConsole console = new GridExamConsole(exam);-->
-	<bean id="console" class="spring.di.ui.InlineExamConsole">
+	<!--<bean id="console" class="spring.di.ui.InlineExamConsole">-->
 		<!--console.setExam(exam);-->
 		<!--<property name="exam" ref="exam"/>-->
-	</bean>
+	<!--<</bean>-->
 </beans>
