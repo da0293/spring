@@ -11,17 +11,5 @@
 
     <context:component-scan base-package="spring.di.ui, spring.entity"/>
     <!-- Exam exam = new NewlecExam(); -->
-    <!--<bean id="exam1" class="spring.entity.NewlecExam" p:kor="10" p:eng="20" p:math="30" p:com="40"/>
-    <bean id="exam2" class="spring.entity.NewlecExam" p:kor="20" p:eng="20" p:math="30" p:com="40"/>-->
-    <!--<bean id="exam" class="spring.entity.NewlecExam">
-		<constructor-arg name="kor" value="10"/>
-		<constructor-arg name="eng" value="20"/>
-		<constructor-arg name="com" value="30"/>
-		<constructor-arg name="math" value="40"/>
-    </bean>-->
-	 <!--ExamConsole console = new GridExamConsole(exam);-->
-	<!--<bean id="console" class="spring.di.ui.InlineExamConsole">-->
-		<!--console.setExam(exam);-->
-		<!--<property name="exam" ref="exam"/>-->
-	<!--<</bean>-->
+    <bean id="exam" class="spring.entity.NewlecExam" p:kor="10" p:eng="20" p:math="30" p:com="40"/>
 </beans>
