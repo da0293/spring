@@ -13,6 +13,7 @@
     <bean id="target" class="spring.aop.entity.NewlecExam" p:kor="1" p:eng="1" p:math="1" p:com="1"/>
    	<!-- LogAroundAdvice 빈 등록 : 로그 기록을 담당하는 어드바이스, 핸들러이다.-->
    	<bean id="logAroundAdvice" class="spring.aop.advice.LogAroundAdvice" />
+   	<bean id="logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice" />
     <!-- 이름이 exam인 ProxyFactoryBean 빈 등록 -> proxy 생성 -->
     <bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
     	<!-- proxy는 2가지를 설정해야 한다. -->
@@ -25,6 +26,7 @@
     		<list>
     			<!-- value에 참조하고 있는 핸들러의 이름을 넣어준다. -->
     			<value>logAroundAdvice</value>
+    			<value>logBeforeAdvice</value>
     		</list>
     	</property>
     </bean>
