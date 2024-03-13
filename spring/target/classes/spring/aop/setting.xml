@@ -10,12 +10,45 @@
                            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 이름이 target인 NewlecExam 빈 등록 -->
-    <bean id="target" class="spring.aop.entity.NewlecExam" p:kor="101" p:eng="1" p:math="1" p:com="1"/>
+    <bean id="target" class="spring.aop.entity.NewlecExam" p:kor="1" p:eng="1" p:math="1" p:com="1"/>
    	<!-- LogAroundAdvice 빈 등록 : 로그 기록을 담당하는 어드바이스, 핸들러이다.-->
    	<bean id="logAroundAdvice" class="spring.aop.advice.LogAroundAdvice" />
    	<bean id="logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice" />
    	<bean id="logAfterRerturningAdvice" class="spring.aop.advice.LogAfterRerturningAdvice" />
    	<bean id="logAfterThrowingAdvice" class="spring.aop.advice.LogAfterThrowingAdvice" />
+<!--<bean id="classicPointCut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+    	<property name="mappedName" value="total" />
+    </bean>
+	<bean id="classBeforeAdvisor" class="org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor">
+    	<property name="advice" ref="logBeforeAdvice" />
+    	<property name="pointcut" ref="classicPointCut" />
+    </bean>
+    <bean id="classAroundAdvisor" class="org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor">
+    	<property name="advice" ref="logAroundAdvice" />
+    	<property name="pointcut" ref="classicPointCut" />
+    </bean> -->
+    <!-- 위 방법보다 간단한 Advisor -->
+<!--<bean id="classBeforeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+    	<property name="advice" ref="logBeforeAdvice" />
+    	<property name="mappedNames">
+    		<list>
+    			<value>total</value>
+    			<value>avg</value>
+    		</list>
+    	</property>
+    </bean>-->
+   	<bean id="classBeforeAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+    	<property name="advice" ref="logBeforeAdvice" />
+    	<property name="patterns">
+    		<list>
+    			<value>.*to.*</value>
+    		</list>
+    	</property>
+    </bean>
+    <bean id="classAroundAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+    	<property name="advice" ref="logAroundAdvice" />
+    	<property name="mappedName" value="total" />
+    </bean> 
     <!-- 이름이 exam인 ProxyFactoryBean 빈 등록 -> proxy 생성 -->
     <bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
     	<!-- proxy는 2가지를 설정해야 한다. -->
@@ -27,8 +60,8 @@
     		<!-- interceptorNames:복수형 답게 리스트를 사용해 여러개 넣어줄 수 있다 -->
     		<list>
     			<!-- value에 참조하고 있는 핸들러의 이름을 넣어준다. -->
-    			<value>logAroundAdvice</value>
-    			<value>logBeforeAdvice</value>
+    			<value>classAroundAdvisor</value>
+    			<value>classBeforeAdvisor</value>
     			<value>logAfterRerturningAdvice</value>
     			<value>logAfterThrowingAdvice</value>
     		</list>

@@ -17,6 +17,7 @@ public class Program {
 		// proxy를 이용해 업무 로직 실행 시간 계산하는 부수적 기능까지 껴 놓음 
 		System.out.printf("total is %d\n", exam.total());
 		System.out.printf("avg is %f\n", exam.avg());
+		
 	}
 
 }
