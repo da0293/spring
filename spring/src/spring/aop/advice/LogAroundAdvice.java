@@ -8,7 +8,7 @@ public class LogAroundAdvice implements MethodInterceptor{
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		long start = System.currentTimeMillis(); 
-		// 주 업무 로직 호출
+		// 주 업무 로직 호출 (스프링없이는 Object result = method.invoke(exam, args);)
 		Object result= invocation.proceed();
 		
 		long end = System.currentTimeMillis();
