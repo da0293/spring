@@ -20,7 +20,7 @@ public class IndexController implements Controller{
 		mv.addObject("data", "Hello Spring MVC");
 		
 		// 뷰 이름을 "index.jsp"로 설정
-		mv.setViewName("index.jsp");
+		mv.setViewName("WEB-INF/view/index.jsp");
 		
 		// ModelAndView 객체 반환
 		return mv;

@@ -6,8 +6,9 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- /index url요청이 오면 IndexController을 객체화해서 호출 -->
 	<!-- id엔 url, 그리고 url을 가지고 컨테이너에서 클래스를 꺼낸다.패키지명까지 씀  -->
+	<!-- id는 주요 bean의 주요 식별자이고 name속성은 선택적 별칭 -->
 	<!-- bean 부분은 컨테이너에 담겨진다. -->
-    <bean id="/index" class="com.newlecture.web.controller.IndexController">  
+    <bean name="/index" class="com.newlecture.web.controller.IndexController">  
         <!-- collaborators and configuration for this bean go here -->
     </bean>
 </beans>
