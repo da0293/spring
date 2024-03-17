@@ -14,14 +14,14 @@ public class IndexController implements Controller{
 		System.out.println("index controller");
 		
 		// ModelAndView 객체 생성
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView("root.index");
 		
 		// "data"라는 키와 "Hello Spring MVC"라는 값을 추가
 		mv.addObject("data", "Hello Spring MVC");
 		
 		// 뷰 이름을 "index.jsp"로 설정
-		mv.setViewName("WEB-INF/view/index.jsp");
-		
+		//mv.setViewName("WEB-INF/view/index.jsp");
+
 		// ModelAndView 객체 반환
 		return mv;
 	}	
