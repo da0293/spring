@@ -15,11 +15,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.service.NoticeService;
 
-@Controller
+@Service
 public class JDBCNoticeService implements NoticeService{
 
 	@Autowired
