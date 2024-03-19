@@ -8,34 +8,46 @@
   	<maven.compiler.source>1.8</maven.compiler.source>
   	<maven.compiler.target>1.8</maven.compiler.target>
   </properties>
-  <dependencies>
- 	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-api -->
+<dependencies>
+    <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-api -->
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-api</artifactId>
+        <version>9.0.86</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>5.3.14</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
+    <dependency>
+        <groupId>org.apache.tiles</groupId>
+        <artifactId>tiles-jsp</artifactId>
+        <version>3.0.8</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
+	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 	<dependency>
-	    <groupId>org.apache.tomcat</groupId>
-	    <artifactId>tomcat-api</artifactId>
-	    <version>9.0.86</version>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.30</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-webmvc</artifactId>
-	    <version>5.2.9.RELEASE</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
-	<dependency>
-	    <groupId>org.apache.tiles</groupId>
-	    <artifactId>tiles-jsp</artifactId>
-	    <version>3.0.8</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl -->
-	<dependency>
-	    <groupId>javax.servlet.jsp.jstl</groupId>
-	    <artifactId>jstl-api</artifactId>
-	    <version>1.2</version>
-	    <type>jar</type>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>5.3.14</version>
 	</dependency>
 
-  </dependencies>
+</dependencies>
   <build>
 		<plugins>
 			<plugin>

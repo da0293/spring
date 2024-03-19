@@ -14,7 +14,10 @@
     <!-- 빈 정의는 컨테이너 내에 포함됩니다. -->
     <!-- name="/index"은 실제 index폴더가 있는것이 아니라 단지 url이름이다. -->
     <bean name="/index" class="com.newlecture.web.controller.IndexController" />  
-    <bean name="/notice/list" class="com.newlecture.web.controller.notice.ListController" />  
+    <bean name="/notice/list" class="com.newlecture.web.controller.notice.ListController">
+    	<!-- 이제 set되는 자료형이 클래스가 아니라 인터페이스다. -->
+    	<property name="service" ref="noticeService" />
+    </bean>  
 	<bean name="/notice/detail" class="com.newlecture.web.controller.notice.DetailController" />  
     <bean
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -40,4 +43,14 @@
     </bean>
     <!--  mapping="/resource/**" : /**안에 들어오는 url은 location="/resource/"에 두겠다. -->
     <mvc:resources location="/static/" mapping="/**"></mvc:resources> 
+	<bean id="noticeService" class="com.newlecture.web.service.jdbc.JDBCNoticeService">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/spring_db?serverTimezone=UTC&amp;characterEncoding=UTF-8" />
+		<property name="username" value="root"/>
+		<property name="password" value="Abcd123!" />
+	</bean>
 </beans>
+ 
