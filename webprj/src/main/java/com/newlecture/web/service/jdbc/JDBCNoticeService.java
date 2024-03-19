@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.service.NoticeService;
 
@@ -20,13 +22,8 @@ public class JDBCNoticeService implements NoticeService{
 //	private String uid = "root";
 //	private String pwd = "Abcd123!";
 //	private String driver = "com.mysql.jdbc.Driver";
-	
+	@Autowired
 	private DataSource dataSource;
-	
-	
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 
 	// Service 인터페이스 내용을 구현
 	public List<Notice>getList(int page, String field, String query) throws ClassNotFoundException, SQLException{

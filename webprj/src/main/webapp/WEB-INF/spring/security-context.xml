@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 디스패처 서블릿 설정 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- /index URL 요청에 대한 매핑 -->
+	<!-- "/index" 이름을 가진 빈을 정의하고 IndexController 클래스와 연결 -->
+    <!-- id 속성은 주요 빈 식별자이며 name 속성은 선택적인 별칭을 제공 -->
+    <!-- 빈 정의는 컨테이너 내에 포함됩니다. -->
+    <!-- name="/index"은 실제 index폴더가 있는것이 아니라 단지 url이름이다. -->
+    <bean name="/index" class="com.newlecture.web.controller.IndexController" />  
+    <bean name="/notice/list" class="com.newlecture.web.controller.notice.ListController">
+    	<!-- 이제 set되는 자료형이 클래스가 아니라 인터페이스다. -->
+    	<property name="service" ref="noticeService" />
+    </bean>  
+	<bean name="/notice/detail" class="com.newlecture.web.controller.notice.DetailController" />  
+    <bean
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<!-- 뷰리졸버보다 우선순위를 높게하였다. -->
+		<property name="order" value="1" />
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles.xml" />
+	</bean>
+    <!-- 이름 또는 id를 지정하지 않고 IndexController의 또 다른 인스턴스를 등록 -->
+    <bean class="com.newlecture.web.controller.IndexController" />
+    
+    <!-- 뷰 리졸버 설정을 통해 뷰 이름을 JSP 파일에 매핑 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<!-- 뷰 파일 위치의 접두사 설정 -->
+    	<property name="prefix" value="/WEB-INF/view/"></property>
+    	<!-- 뷰 파일 확장자 설정 -->
+    	<property name="suffix" value=".jsp"></property>
+    	<property name="order" value="2" />
+    </bean>
+    <!--  mapping="/resource/**" : /**안에 들어오는 url은 location="/resource/"에 두겠다. -->
+    <mvc:resources location="/static/" mapping="/**"></mvc:resources> 
+	<bean id="noticeService" class="com.newlecture.web.service.jdbc.JDBCNoticeService">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/spring_db?serverTimezone=UTC&amp;characterEncoding=UTF-8" />
+		<property name="username" value="root"/>
+		<property name="password" value="Abcd123!" />
+	</bean>
+</beans>
+ 

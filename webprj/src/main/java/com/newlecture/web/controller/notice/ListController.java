@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
@@ -15,12 +16,8 @@ import com.newlecture.web.service.NoticeService;
 public class ListController implements Controller {
 
 	// NoticeService를 인터페이스로 두면
+	@Autowired
 	private NoticeService noticeService;
-
-	// 의존성 주입을 위한 setter 메서드
-	public void setService(NoticeService noticeService) {
-		this.noticeService = noticeService;
-	}
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
