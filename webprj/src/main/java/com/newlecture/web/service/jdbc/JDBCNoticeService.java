@@ -13,15 +13,15 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import com.newlecture.web.entity.Notice;
 import com.newlecture.web.service.NoticeService;
 
+@Controller
 public class JDBCNoticeService implements NoticeService{
-//	private String url = "jdbc:mysql://localhost:3306/spring_db?serverTimezone=UTC&characterEncoding=UTF-8";
-//	private String uid = "root";
-//	private String pwd = "Abcd123!";
-//	private String driver = "com.mysql.jdbc.Driver";
+
 	@Autowired
 	private DataSource dataSource;
 
