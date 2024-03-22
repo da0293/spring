@@ -16,7 +16,6 @@ public class NoticeController { // <bean name="adminNoticeController class="com.
 	@RequestMapping("reg")
 	@ResponseBody
 	public String reg(String title, String content) {
-		
 		return String.format("title:%s<br>content:%s<br>", title, content); 
 	}
 	
@@ -29,4 +28,6 @@ public class NoticeController { // <bean name="adminNoticeController class="com.
 	public String del() {
 		return ""; 
 	}
+	
+
 }
